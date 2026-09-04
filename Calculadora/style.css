@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f4f6f8;
+  margin: 0;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 420px;
+}
+
+h1 {
+  font-size: 1.4rem;
+  margin-top: 0;
+  color: #222;
+  text-align: center;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formulario label {
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 8px;
+}
+
+.formulario select,
+.formulario input {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.formulario button {
+  margin-top: 16px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.formulario button:hover {
+  background: #1d4ed8;
+}
+
+.resultado {
+  margin-top: 20px;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 15px;
+}
+
+.fila {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+.fila span:last-child {
+  font-weight: 600;
+  color: #222;
+}
+
+.total {
+  background: #eef7ee;
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-top: 10px;
+}
+
+.total span:last-child {
+  color: #1e7d1e;
+  font-size: 1.1rem;
+}
+
+.descuento-aviso {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #b45309;
+  text-align: center;
+}
