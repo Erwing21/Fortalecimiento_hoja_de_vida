@@ -204,3 +204,21 @@ footer {
   cursor: pointer;
   font-size: 1rem;
 }
+
+.buscar-habilidad {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  border: 1px solid #dbe5dd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.lista-vacia {
+  background: none;
+  border: none;
+  color: #5a6872;
+  font-style: italic;
+  padding: 8px 0;
+}

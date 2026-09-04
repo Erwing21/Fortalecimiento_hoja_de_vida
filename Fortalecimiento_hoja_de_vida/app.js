@@ -49,6 +49,8 @@ const botonAgregarHabilidad = document.getElementById('agregarHabilidad');
 const botonLimpiarHabilidades = document.getElementById('limpiarHabilidades');
 const listaHabilidades = document.getElementById('listaHabilidades');
 const mensajeHabilidad = document.getElementById('mensajeHabilidad');
+const buscarHabilidadInput = document.getElementById('buscarHabilidad');
+
 
 function listarHabilidades() {
   listaHabilidades.innerHTML = ''; 
@@ -139,18 +141,18 @@ function listarHabilidades() {
     item.appendChild(botonQuitar);
     listaHabilidades.appendChild(item);
   });
-}
 
 buscarHabilidadInput.addEventListener('input', listarHabilidades);
 
+}
 botonLimpiarHabilidades.addEventListener('click', () => {
   habilidades.length = 0; 
   listarHabilidades();
 });
 
-
 nombreHabilidadInput.addEventListener('keydown', (evento) => {
   if (evento.key === 'Enter') {
     botonAgregarHabilidad.click();
+    
   }
 });
