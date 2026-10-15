@@ -13,4 +13,44 @@
     <servlet-name>ConsejoServlet</servlet-name>
     <url-pattern>/consejo</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>HabilidadesServlet</servlet-name>
+    <servlet-class>com.estudiante.hojadevida.HabilidadesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HabilidadesServlet</servlet-name>
+    <url-pattern>/habilidades</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ConsultaServlet</servlet-name>
+    <servlet-class>com.estudiante.hojadevida.ConsultaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConsultaServlet</servlet-name>
+    <url-pattern>/consulta</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ExperienciaServlet</servlet-name>
+    <servlet-class>com.estudiante.hojadevida.ExperienciaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExperienciaServlet</servlet-name>
+    <url-pattern>/experiencia</url-pattern>
+  </servlet-mapping>
+
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/error.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/WEB-INF/error.jsp</location>
+  </error-page>
+  <error-page>
+    <exception-type>java.lang.Exception</exception-type>
+    <location>/WEB-INF/error.jsp</location>
+  </error-page>
 </web-app>
