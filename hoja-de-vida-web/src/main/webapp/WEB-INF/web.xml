@@ -2,44 +2,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
-  <welcome-file-list>
+    <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <servlet-name>ConsejoServlet</servlet-name>
-    <servlet-class>com.estudiante.hojadevida.ConsejoServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ConsejoServlet</servlet-name>
-    <url-pattern>/consejo</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>HabilidadesServlet</servlet-name>
-    <servlet-class>com.estudiante.hojadevida.HabilidadesServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>HabilidadesServlet</servlet-name>
-    <url-pattern>/habilidades</url-pattern>
-  </servlet-mapping>
-
-  <servlet>
-    <servlet-name>ConsultaServlet</servlet-name>
-    <servlet-class>com.estudiante.hojadevida.ConsultaServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ConsultaServlet</servlet-name>
-    <url-pattern>/consulta</url-pattern>
-  </servlet-mapping>
-
-  <servlet>
-    <servlet-name>ExperienciaServlet</servlet-name>
-    <servlet-class>com.estudiante.hojadevida.ExperienciaServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ExperienciaServlet</servlet-name>
-    <url-pattern>/experiencia</url-pattern>
-  </servlet-mapping>
-
 
   <error-page>
     <error-code>404</error-code>

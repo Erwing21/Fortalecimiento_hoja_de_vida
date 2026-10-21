@@ -23,17 +23,28 @@
         String nivel = (String) request.getAttribute("nivel");
         List<Habilidad> habilidades = (List<Habilidad>) request.getAttribute("habilidades");
       %>
-      <p>Nivel consultado: <%= nivel %></p>
-      <ul>
-        <% for (Habilidad h : habilidades) { %>
-          <li><%= h.getNombre() %> — <%= h.getNivel() %></li>
-        <% } %>
-        <% if (habilidades.isEmpty()) { %>
-          <li>No hay habilidades en este nivel.</li>
-        <% } %>
-      </ul>
-      <%-- application: valor compartido por toda la aplicacion (lo guarda ConsultaServlet) --%>
-      <p>Último nivel consultado en la aplicación: <%= application.getAttribute("ultimoNivel") %></p>
-    </main>
-  </body>
-  </html>
+      <p>Nivel consultado: <strong><%= Texto.escapar(nivel) %></strong></p>
+
+    <% if (habilidades.isEmpty()) { %>
+      <p>No hay habilidades en este nivel.</p>
+    <% } else { %>
+      <table class="tabla-datos">
+        <thead>
+          <tr><th>ID</th><th>Habilidad</th><th>Nivel</th></tr>
+        </thead>
+        <tbody>
+          <% for (Habilidad h : habilidades) { %>
+            <tr>
+              <td><%= h.getId() %></td>
+              <td><%= Texto.escapar(h.getNombre()) %></td>
+              <td><%= Texto.escapar(h.getNivel()) %></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    <% } %>
+    <%-- application: valor compartido por toda la aplicacion (lo guarda ConsultaServlet) --%>
+    <p>Último nivel consultado en la aplicación: <%= Texto.escapar((String) application.getAttribute("ultimoNivel")) %></p>
+  </main>
+</body>
+</html>

@@ -14,12 +14,31 @@
     <h1>Mis habilidades</h1>
   </header>
   <main style="padding: 20px 10%;">
-    <% List<Habilidad> habilidades = (List<Habilidad>) request.getAttribute("habilidades"); %>
-    <ul>
-      <% for (Habilidad h : habilidades) { %>
-        <li><%= h.getNombre() %> — <%= h.getNivel() %></li>
-      <% } %>
-    </ul>
+    <%-- HabilidadServlet consulta la base de datos; la JSP solo muestra los registros --%>
+    <%
+      String usuario = (String) session.getAttribute("usuario");
+      List<Habilidad> habilidades = (List<Habilidad>) request.getAttribute("habilidades");
+    %>
+    <p>Sesión activa de: <strong><%= Texto.escapar(usuario) %></strong></p>
+
+    <% if (habilidades.isEmpty()) { %>
+      <p>No hay habilidades registradas en la base de datos.</p>
+    <% } else { %>
+      <table class="tabla-datos">
+        <thead>
+          <tr><th>ID</th><th>Habilidad</th><th>Nivel</th></tr>
+        </thead>
+        <tbody>
+          <% for (Habilidad h : habilidades) { %>
+            <tr>
+              <td><%= h.getId() %></td>
+              <td><%= Texto.escapar(h.getNombre()) %></td>
+              <td><%= Texto.escapar(h.getNivel()) %></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    <% } %>
     <p>Total de habilidades mostradas: <%= habilidades.size() %></p>
   </main>
 </body>

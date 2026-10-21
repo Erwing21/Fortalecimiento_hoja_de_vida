@@ -302,3 +302,66 @@ a.btn-limpiar {
   color: #c0392b;
   margin-top: 0;
 }
+
+.menu-links { display: flex; align-items: center; flex-wrap: wrap; }
+
+.usuario-activo {
+  margin-left: 16px;
+  padding: 4px 10px;
+  background: #ffffff26;
+  border-radius: 12px;
+  font-size: 0.9em;
+}
+
+.form-salir { display: inline; margin: 0 0 0 16px; }
+
+.btn-salir {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-salir:hover { background: #ffffff26; }
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 360px;
+}
+
+.form-login input {
+  padding: 10px;
+  border: 1px solid #dbe5dd;
+  border-radius: 8px;
+}
+
+.form-login button {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #3083e9;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.tabla-datos {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 640px;
+  background: white;
+}
+
+.tabla-datos th,
+.tabla-datos td {
+  border: 1px solid #dbe5dd;
+  padding: 10px 14px;
+  text-align: left;
+}
+
+.tabla-datos th { background: #183247; color: white; }
