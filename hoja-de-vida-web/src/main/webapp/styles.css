@@ -365,3 +365,12 @@ a.btn-limpiar {
 }
 
 .tabla-datos th { background: #183247; color: white; }
+
+.mensaje-ok {
+  color: #1e7e46;
+  background: #eaf7ee;
+  border: 1px solid #b7e1c4;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 10px 0;
+}

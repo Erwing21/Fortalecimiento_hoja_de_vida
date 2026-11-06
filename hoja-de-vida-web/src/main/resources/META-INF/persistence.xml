@@ -5,13 +5,12 @@
              version="3.0">
 
     <persistence-unit name="hojaDeVidaPU" transaction-type="JTA">
-        <!-- Datasource creado en WildFly (ver README). La clave vive en el servidor, no en el codigo. -->
-        <jta-data-source>java:/jdbc/hojaDeVida</jta-data-source>
+
+        <jta-data-source>hojaDeVida</jta-data-source>
         <class>com.estudiante.hojadevida.modelo.Experiencia</class>
         <properties>
-            <!-- Muestran en la consola de WildFly el SQL que Hibernate genera -->
-            <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.format_sql" value="true"/>
+            
+            <property name="openjpa.Log" value="DefaultLevel=WARN, SQL=TRACE"/>
         </properties>
     </persistence-unit>
 </persistence>
