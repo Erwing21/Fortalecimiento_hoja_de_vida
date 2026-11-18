@@ -11,8 +11,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-
-@WebFilter(urlPatterns = {"/habilidades", "/consulta", "/consejo", "/experiencia", "/Experiencia.html"})
+@WebFilter(urlPatterns = { "/habilidades", "/consulta", "/consejo", "/experiencia", "/Experiencia.html",
+        "/habilidades-jsf.xhtml" })
 public class SesionFilter implements Filter {
 
     @Override
