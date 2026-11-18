@@ -15,6 +15,7 @@
       <a href="<%= base %>/Experiencia.html">Registrar experiencia</a>
       <a href="<%= base %>/habilidades">Habilidades</a>
       <a href="${base}/habilidades-jsf.xhtml">Habilidades JSF</a>
+      <a href="${base}/ciclo-vida.xhtml">Ciclo de vida JSF</a>
       <a href="<%= base %>/consulta">Consulta por nivel</a>
       <span class="usuario-activo">Usuario: <%= Texto.escapar(usuarioMenu) %></span>
       <form method="post" action="<%= base %>/logout" class="form-salir">
