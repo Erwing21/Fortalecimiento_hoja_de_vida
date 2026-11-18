@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html lang="es"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+
+<h:head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Habilidades con JSF</title>
+
+    <link rel="stylesheet" href="#{request.contextPath}/styles.css" />
+</h:head>
+
+<h:body>
+    <header class="hero hero-interno">
+        <nav class="menu">
+            <strong>Hoja de Vida Estudiantil</strong>
+            <div class="menu-links">
+                <a href="#{request.contextPath}/index.html">Inicio</a>
+                <a href="#{request.contextPath}/habilidades">Habilidades</a>
+                <a href="#{request.contextPath}/consulta">Consulta por nivel</a>
+            </div>
+        </nav>
+        <h1>Registro de habilidades (JSF)</h1>
+        <p>Formulario con validaciones y tabla de registros guardados en tu sesión.</p>
+    </header>
+
+    <main class="contenido">
+        <section>
+            <h2>Nueva habilidad</h2>
+            <div class="card card-formulario">
+
+
+                <h:form id="formulario" styleClass="formulario-experiencia">
+
+
+                    <h:messages id="mensajes" styleClass="mensaje-error" />
+
+                    <label>Habilidad
+
+                        <h:inputText id="nombre"
+                                     value="#{registroHabilidades.nombre}"
+                                     required="true"
+                                     requiredMessage="La habilidad es obligatoria."
+                                     validatorMessage="La habilidad no puede estar en blanco.">
+                            <f:validateRegex pattern=".*\S.*" />
+                        </h:inputText>
+                    </label>
+
+                    <label>Nivel (Básico, Intermedio o Avanzado)
+
+                        <h:inputText id="nivel"
+                                     value="#{registroHabilidades.nivel}"
+                                     required="true"
+                                     requiredMessage="El nivel es obligatorio."
+                                     validatorMessage="El nivel debe ser Básico, Intermedio o Avanzado.">
+                            <f:validateRegex pattern="Básico|Intermedio|Avanzado" />
+                        </h:inputText>
+                    </label>
+
+                    <label>Horas de práctica (1 a 200)
+
+                        <h:inputText id="horas"
+                                     value="#{registroHabilidades.horas}"
+                                     required="true"
+                                     requiredMessage="Las horas de práctica son obligatorias."
+                                     converterMessage="Las horas deben ser un número entero, por ejemplo 40."
+                                     validatorMessage="Las horas deben estar entre 1 y 200.">
+                            <f:validateLongRange minimum="1" maximum="200" />
+                        </h:inputText>
+                    </label>
+
+
+                    <h:commandButton id="agregar"
+                                     value="Agregar habilidad"
+                                     action="#{registroHabilidades.agregar}"
+                                     styleClass="btn-agregar" />
+                </h:form>
+            </div>
+
+            <h2>Habilidades registradas</h2>
+
+            <p class="dato">Total de habilidades:
+                <h:outputText id="total" value="#{registroHabilidades.total}" />
+            </p>
+
+            <div class="card">
+
+                <h:dataTable id="tabla"
+                             value="#{registroHabilidades.habilidades}"
+                             var="hab"
+                             styleClass="tabla-datos"
+                             rendered="#{not empty registroHabilidades.habilidades}">
+                    <h:column>
+
+                        <f:facet name="header">Habilidad</f:facet>
+                        <h:outputText value="#{hab.nombre}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Nivel</f:facet>
+                        <h:outputText value="#{hab.nivel}" styleClass="nivel" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Horas de práctica</f:facet>
+                        <h:outputText value="#{hab.horas}" />
+                    </h:column>
+                </h:dataTable>
+
+                
+                <h:outputText value="Todavía no has registrado habilidades en esta sesión."
+                              styleClass="lista-vacia"
+                              rendered="#{empty registroHabilidades.habilidades}" />
+            </div>
+
+            <div class="acciones">
+                <a class="btn-limpiar" href="#{request.contextPath}/index.html">Volver a la hoja de vida</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Proyecto de fortalecimiento de hoja de vida · Programacion III</p>
+    </footer>
+</h:body>
+</html>
