@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html lang="es"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+
+<h:head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ciclo de vida JSF</title>
+    <link rel="stylesheet" href="#{request.contextPath}/styles.css" />
+</h:head>
+
+<h:body>
+    <header class="hero hero-interno">
+        <nav class="menu">
+            <strong>Hoja de Vida Estudiantil</strong>
+            <div class="menu-links">
+                <a href="#{request.contextPath}/index.html">Inicio</a>
+                <a href="#{request.contextPath}/habilidades-jsf.xhtml">Habilidades JSF</a>
+                <a href="#{request.contextPath}/ciclo-vida.xhtml">Ciclo de vida JSF</a>
+            </div>
+        </nav>
+        <h1>Perfil profesional: ciclo de vida JSF</h1>
+        <p>Envía el formulario y observa en la consola qué fases se recorren.</p>
+    </header>
+
+    <main class="contenido">
+        <section>
+            <h2>Formulario</h2>
+            <div class="card card-formulario">
+
+
+                <h:form id="formularioCiclo" styleClass="formulario-experiencia">
+
+                    <label>Cargo objetivo (3 a 40 caracteres)
+
+                        <h:inputText id="cargo"
+                                     value="#{perfilCiclo.cargoObjetivo}"
+                                     required="true"
+                                     requiredMessage="El cargo objetivo es obligatorio."
+                                     validatorMessage="El cargo debe tener entre 3 y 40 caracteres.">
+                            <f:validateLength minimum="3" maximum="40" />
+                        </h:inputText>
+
+                        <h:message for="cargo" styleClass="mensaje-error" />
+                    </label>
+
+                    <label>Resumen profesional (20 a 200 caracteres)
+                        <h:inputText id="resumen"
+                                     value="#{perfilCiclo.resumen}"
+                                     required="true"
+                                     requiredMessage="El resumen profesional es obligatorio."
+                                     validatorMessage="El resumen debe tener entre 20 y 200 caracteres.">
+                            <f:validateLength minimum="20" maximum="200" />
+                        </h:inputText>
+                        <h:message for="resumen" styleClass="mensaje-error" />
+                    </label>
+
+
+                    <h:commandButton id="guardar"
+                                     value="Guardar perfil"
+                                     action="#{perfilCiclo.guardar}"
+                                     styleClass="btn-agregar" />
+                </h:form>
+            </div>
+
+
+            <h:outputText id="confirmacion"
+                          value="#{perfilCiclo.confirmacion}"
+                          styleClass="mensaje-ok"
+                          rendered="#{not facesContext.validationFailed and not empty perfilCiclo.confirmacion}" />
+
+
+            <p class="dato">Veces que se ejecutó la acción guardar():
+                <h:outputText id="contador" value="#{perfilCiclo.accionesEjecutadas}" />
+            </p>
+
+            <h2>Arquitectura: de qué se encarga cada pieza</h2>
+            <div class="card">
+                <p class="descripcion">Navegador → FacesServlet → Componentes (Facelets) → Bean CDI → Respuesta HTML.</p>
+                <table class="tabla-datos">
+                    <thead>
+                    <tr><th>Pieza</th><th>Función en esta página</th></tr>
+                    </thead>
+                    <tbody>
+                    <tr><td>Navegador</td><td>Envía la solicitud (GET al abrir, POST al pulsar el botón).</td></tr>
+                    <tr><td>FacesServlet</td><td>Declarado en web.xml con el patrón *.xhtml; recibe la solicitud y ejecuta el ciclo de vida.</td></tr>
+                    <tr><td>Componentes</td><td>ciclo-vida.xhtml define el árbol de componentes (formulario, campos, botón, mensajes).</td></tr>
+                    <tr><td>Bean CDI</td><td>PerfilCicloBean (@Named, @ViewScoped) guarda los datos y ejecuta guardar().</td></tr>
+                    <tr><td>Respuesta</td><td>En la fase 6 se dibuja el HTML con los valores, mensajes y contador actualizados.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Las seis fases del ciclo de vida</h2>
+            <div class="card">
+                <table class="tabla-datos">
+                    <thead>
+                    <tr><th>Fase</th><th>Qué sucede</th><th>GET inicial</th><th>POST válido</th><th>POST inválido</th></tr>
+                    </thead>
+                    <tbody>
+                    <tr><td>1. Restore View</td><td>Se crea o restaura el árbol de componentes.</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
+                    <tr><td>2. Apply Request Values</td><td>Cada componente toma el valor enviado.</td><td>No</td><td>Sí</td><td>Sí</td></tr>
+                    <tr><td>3. Process Validations</td><td>Se revisan required y f:validateLength.</td><td>No</td><td>Sí (correcta)</td><td>Sí (falla)</td></tr>
+                    <tr><td>4. Update Model Values</td><td>Los valores se copian al bean.</td><td>No</td><td>Sí</td><td>No</td></tr>
+                    <tr><td>5. Invoke Application</td><td>Se ejecuta guardar().</td><td>No</td><td>Sí</td><td>No</td></tr>
+                    <tr><td>6. Render Response</td><td>Se dibuja el HTML de respuesta.</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
+                    </tbody>
+                </table>
+                <p class="descripcion">Con un error de validación, JSF salta de la fase 3 directamente a la fase 6:
+                    el bean no se modifica y la acción no se ejecuta.</p>
+            </div>
+
+            <div class="acciones">
+                <a class="btn-limpiar" href="#{request.contextPath}/index.html">Volver a la hoja de vida</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Proyecto de fortalecimiento de hoja de vida · Programacion III</p>
+    </footer>
+</h:body>
+</html>
